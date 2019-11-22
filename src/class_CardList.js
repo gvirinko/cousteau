@@ -1,5 +1,9 @@
+// import {placesSection} from "./script.js";
+import {Card} from "./class_Card.js";
+import {CardPopup} from "./class_CardPopup.js";
 
-class CardList {
+
+export class CardList {
     constructor(parent, initialCards) {
         this.parent = parent;
         this.initialCards = initialCards;
@@ -16,7 +20,7 @@ class CardList {
     }
 
     addCard(name, link) {
-        const newCard = new Card(name, link, placesSection);
+        const newCard = new Card(name, link, this.parent);
         this.newArray.push(newCard);
     }
 
@@ -28,7 +32,7 @@ class CardList {
                 });
             }
         }
-    }  
+    }
 
     renderOneCard() {
         for (let element of this.newArray) {
@@ -36,7 +40,7 @@ class CardList {
                 this.parent.appendChild(element.container);
             }
         }
-    }  
+    }
 
     onAddCardButton() {
         const popupCardMenu = document.querySelector('.popup-card');

@@ -1,8 +1,13 @@
-class Api {
-    constructor(baseUrl, headers) {
+import {CardList} from "./class_CardList";
+import {placesSection} from "./script.js";
+
+export class Api {
+    constructor(baseUrl, headers, cohortId) {
       this.baseUrl = baseUrl;
-      this.headers = headers;
-      this.authorization = token;
+      this.headers = {authorization: '8fadaf07-e3e6-4019-aca9-05f9a137f449', 'Content-Type': 'application/json'};
+    //   this.authorization = token;
+    //   this.token = token;
+      this.cohortId = cohortId;
     }
 
     httpGet(urlSuffix) {
@@ -34,7 +39,7 @@ class Api {
     }
 
     loadProfile() {
-        this.httpGet(`/${cohortId}/users/me`)
+        this.httpGet(`/${this.cohortId}/users/me`)
             .then(result => {
                 document.querySelector('.user-info__name').textContent = result.name;
                 document.querySelector('.user-info__job').textContent = result.about;
@@ -46,7 +51,7 @@ class Api {
     }
 
     loadInitialCards() {
-        this.httpGet(`/${cohortId}/cards`)
+        this.httpGet(`/${this.cohortId}/cards`)
             .then((result) => {
                 let cards = [];
                 for (let i = 0; i < result.length; i++) {
@@ -62,7 +67,7 @@ class Api {
         }
 
     submitProfile(name, job) {
-        this.httpPatch(`/${cohortId}/users/me`, JSON.stringify({name: name, about: job}))
+        this.httpPatch(`/${this.cohortId}/users/me`, JSON.stringify({name: name, about: job}))
             .catch(error => {
                 console.log(error);
             });

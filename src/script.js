@@ -1,11 +1,16 @@
 
+import {handleValidate, validateEditOnInput, validateCardOnInput} from './script-validation.js';
+import {Api} from './class_Api.js';
+import {EditPopup} from "./class_EditPopup.js";
+
+
 // Константы
-const placesSection = document.querySelector('.places-list');
+export const placesSection = document.querySelector('.places-list');
 const userInfoButtonEdit = document.querySelector('.user-info__button_edit');
 
-const token = '58156076-0fba-40e5-92f5-53ef93f74257';
-const cohortId = 'cohort3';
-const serverIP = 'http://95.216.175.5';
+export const token = '8fadaf07-e3e6-4019-aca9-05f9a137f449';
+const cohortId = 'cohort4';
+const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk' : 'https://praktikum.tk'
 
 // Открытие формы редактирования профиля
 userInfoButtonEdit.addEventListener('click', function(event) {
@@ -27,43 +32,10 @@ function startValidationListeners() {
 
 startValidationListeners();
 
-let api = new Api(serverIP, { authorization: token, 'Content-Type': 'application/json'});
+export let api = new Api (serverUrl, {authorization: token, 'Content-Type': 'application/json', 'Cache-Control': 'no-cache'}, cohortId);
 
-//1. Загрузка информации о пользователе с сервера
+// 1. Загрузка информации о пользователе с сервера
 api.loadProfile();
 
 // 2. Загрузка первоначальных карточек с сервера
 api.loadInitialCards();
-
-    /**
-     * Хорошее начало.
-     *
-     * DONE Надо вынести методы API в отдельный класс
-     *
-     * В брифе
-     * Для работы с API создайте класс Api. Все запросы должны быть методами этого класса:
-     * .then не должно быть реализации
-     *
-     * DONE вынесите token, id когорты, IP сервера в константы
-     *
-     * (не успеваю) Валидацию тоже надо бы в отдельный свой класс
-     *
-     * DONE Название файла должно соответствовать названию класса
-     *      1файл = 1класс
-     *
-     * В целом классы у вас хорошие, читабельные
-     *
-     */
-
-
-    /**
-     * 
-     * Работа принимается
-     * 
-     * В конце каждого fetch надо добавлять  catch
-     * 
-     * Ждём вас в следующем спринте
-     * @koras
-     * 
-     * 
-     */

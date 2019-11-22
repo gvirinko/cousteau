@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 </head>
 <body>
   <div class="root">
     <header class="header root__section">
-      <img src="./images/logo.svg" alt="mesto logo" class="logo">
+      <img alt="mesto logo" class="logo" src=./images/logo.svg >
     </header>
     <div class="profile root__section">
       <div class="user-info">
@@ -28,7 +28,7 @@
 
     <div class="popup-edit">
       <div class="popup-edit__content">
-        <img src="./images/close.svg" alt="" class="popup-edit__close">
+        <img alt="" class="popup-edit__close" src=./images/close.svg >
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup-edit__form" name="form_edit">
             <input type="text" name="name" minlength="2" maxlength="30" required class="popup-edit__input popup-edit__input_type_name" placeholder="Имя" autofocus>
@@ -42,7 +42,7 @@
 
     <div class="popup-card">
       <div class="popup-card__content">
-        <img src="./images/close.svg" alt="" class="popup-card__close">
+        <img alt="" class="popup-edit__close" src=./images/close.svg >
         <h3 class="popup-card__title">Новое место</h3>
         <form class="popup-card__form" name="form_card">
             <input type="text" name="namecard" minlength="2" maxlength="30" required class="popup-card__input popup-card__input_type_name" placeholder="Название" autofocus>
@@ -56,22 +56,13 @@
 
     <div class="popup-enlarged">
       <div class="popup-enlarged__container">
-        <img src="./images/close.svg" alt="" class="popup-enlarged__close">
+        <img alt="" class="popup-edit__close" src=./images/close.svg >
         <img src="" alt="" class="popup-enlarged__image">
       </div>
     </div>
 
   </div>
-  
-  <script src="class_Api.js"></script>
-  <script src="class_Card.js"></script>
-  <script src="class_CardList.js"></script>
-  <script src="class_EnlargedPopup.js"></script>
-  <script src="class_CardPopup.js"></script>
-  <script src="class_EditPopup.js"></script>
-  
-  <script src="script-validation.js"></script>
-  <script src="script.js"></script>
-  
+
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>

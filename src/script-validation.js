@@ -1,3 +1,5 @@
+export {handleValidate, validate, validateLink, activateError, resetError, resetAllValidationMessages, validateEditOnInput, validateCardOnInput};
+
 const errorMessages = {
     requiredField: 'Это обязательное поле',
     requiredLength: 'Должно быть от 2 до 30 символов',
